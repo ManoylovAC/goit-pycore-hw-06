@@ -37,9 +37,9 @@ class Record:
         self.phones = [p for p in self.phones if p.value != phone]
 
     def edit_phone(self, old_phone: str, new_phone: str):
-        for p in self.phones:
+        for idx, p in enumerate(self.phones):
             if p.value == old_phone:
-                p = Phone(new_phone)
+                self.phones[idx] = Phone(new_phone)
 
     def find_phone(self, phone: str):
         finded_phones = [p for p in self.phones if p.value == phone]
@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
         # Знаходження та редагування телефону для John
         john = book.find('John')
-        john.edit_phone('1234567890', '_1112223333')
+        john.edit_phone('1234567890', '1112223333')
         # john.edit_phone('1234567890', '11122RT333')
 
         print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
